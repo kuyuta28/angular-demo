@@ -1,0 +1,25 @@
+.container {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  color: #3f51b5;
+}
+
+.content {
+  margin-top: 20px;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+}
+
+code {
+  font-family: 'Courier New', Courier, monospace;
+  background-color: #eee;
+  padding: 2px 5px;
+  border-radius: 3px;
+}

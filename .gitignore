@@ -40,3 +40,19 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# Environment files
+/src/environments/*.js
+/src/environments/*.js.map
+
+# Firebase
+.firebase/
+firebase-debug.log
+
+# Angular CLI configuration
+.angular-cli.json
+angular.json.old
+
+# E2E
+/e2e/*.js
+/e2e/*.map
