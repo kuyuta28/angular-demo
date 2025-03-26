@@ -1,5 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* Reset styles for consistency */
 * {
   margin: 0;
@@ -14,11 +18,13 @@ body {
   color: #333;
   margin: 0;
   padding: 0;
+  @apply font-sans bg-gray-50 text-gray-800;
 }
 
 a {
   text-decoration: none;
   color: inherit;
+  @apply no-underline text-inherit;
 }
 
 .container {

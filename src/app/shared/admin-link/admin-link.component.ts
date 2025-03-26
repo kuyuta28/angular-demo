@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-admin-link',
-  template: `<a routerLink="/admin" class="admin-link">Go to Admin Page</a>`,
-  styleUrls: ['./admin-link.component.css']
+  template: `<a routerLink="/admin" class="block mt-5 text-center text-primary font-bold underline cursor-pointer">Go to Admin Page</a>`,
+  styles: []
 })
 export class AdminLinkComponent {}
