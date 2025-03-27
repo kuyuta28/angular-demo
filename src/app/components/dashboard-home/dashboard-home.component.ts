@@ -304,25 +304,27 @@ export class DashboardHomeComponent implements OnInit {
     }));
   }
 
-  getColorClass(index: number): string {
-    const colors = [
-      'bg-indigo-500',
-      'bg-blue-500',
-      'bg-green-500',
-      'bg-amber-500',
-      'bg-purple-500'
-    ];
+  getColor(index: number, colors: string[]): string {
     return colors[index % colors.length];
   }
 
-  getBgColorClass(index: number): string {
-    const colors = [
+  getColorClass(index: number): string {
+    return this.getColor(index, [
       'bg-indigo-500',
       'bg-blue-500',
       'bg-green-500',
       'bg-amber-500',
       'bg-purple-500'
-    ];
-    return colors[index % colors.length];
+    ]);
+  }
+
+  getBgColorClass(index: number): string {
+    return this.getColor(index, [
+      'bg-indigo-500',
+      'bg-blue-500',
+      'bg-green-500',
+      'bg-amber-500',
+      'bg-purple-500'
+    ]);
   }
 } 
