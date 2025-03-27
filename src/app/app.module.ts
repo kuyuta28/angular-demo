@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { UsersComponent } from './components/users/users.component';
 import { ProductsComponent } from './components/products/products.component';
+import { DashboardHomeComponent } from './components/dashboard-home/dashboard-home.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
@@ -14,7 +15,7 @@ const routes: Routes = [
     path: 'dashboard',
     component: DashboardComponent,
     children: [
-      { path: '', redirectTo: 'users', pathMatch: 'full' },
+      { path: '', component: DashboardHomeComponent },
       { path: 'users', component: UsersComponent },
       { path: 'products', component: ProductsComponent }
     ]
@@ -26,7 +27,8 @@ const routes: Routes = [
     AppComponent,
     DashboardComponent,
     UsersComponent,
-    ProductsComponent
+    ProductsComponent,
+    DashboardHomeComponent
   ],
   imports: [
     BrowserModule,
