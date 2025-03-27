@@ -116,11 +116,11 @@ import { TranslateService } from '@ngx-translate/core';
           <!-- Chart -->
           <div class="bg-white rounded-xl shadow-card p-6 border border-gray-100 mb-8">
             <div class="flex justify-between items-center mb-6">
-              <h3 class="text-lg font-semibold text-gray-800">Monthly Revenue</h3>
+              <h3 class="text-lg font-semibold text-gray-800">{{ 'DASHBOARD.CHART_TITLE' | translate }}</h3>
               <div class="flex space-x-2">
-                <button class="px-3 py-1.5 text-xs font-medium text-indigo-600 bg-indigo-50 rounded-md hover:bg-indigo-100">Weekly</button>
-                <button class="px-3 py-1.5 text-xs font-medium text-white bg-indigo-600 rounded-md hover:bg-indigo-700">Monthly</button>
-                <button class="px-3 py-1.5 text-xs font-medium text-indigo-600 bg-indigo-50 rounded-md hover:bg-indigo-100">Yearly</button>
+                <button class="px-3 py-1.5 text-xs font-medium text-indigo-600 bg-indigo-50 rounded-md hover:bg-indigo-100">{{ 'DASHBOARD.WEEKLY' | translate }}</button>
+                <button class="px-3 py-1.5 text-xs font-medium text-white bg-indigo-600 rounded-md hover:bg-indigo-700">{{ 'DASHBOARD.MONTHLY' | translate }}</button>
+                <button class="px-3 py-1.5 text-xs font-medium text-indigo-600 bg-indigo-50 rounded-md hover:bg-indigo-100">{{ 'DASHBOARD.YEARLY' | translate }}</button>
               </div>
             </div>
             
@@ -132,7 +132,7 @@ import { TranslateService } from '@ngx-translate/core';
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                   </svg>
                   <p class="text-gray-500">Chart would appear here in a real implementation</p>
-                  <p class="text-gray-400 text-sm mt-1">Bar chart showing monthly revenue over the past year</p>
+                  <p class="text-gray-400 text-sm mt-1">Bar chart showing {{ 'DASHBOARD.CHART_TITLE' | translate | lowercase }} over the past year</p>
                 </div>
               </div>
             </div>
@@ -142,8 +142,8 @@ import { TranslateService } from '@ngx-translate/core';
           <div class="bg-white rounded-xl shadow-card border border-gray-100">
             <div class="p-6 border-b border-gray-100">
               <div class="flex justify-between items-center">
-                <h3 class="text-lg font-semibold text-gray-800">Recent Orders</h3>
-                <a href="#" class="text-sm font-medium text-indigo-600 hover:text-indigo-800">View All</a>
+                <h3 class="text-lg font-semibold text-gray-800">{{ 'DASHBOARD.RECENT_ORDERS' | translate }}</h3>
+                <a href="#" class="text-sm font-medium text-indigo-600 hover:text-indigo-800">{{ 'DASHBOARD.VIEW_ALL' | translate }}</a>
               </div>
             </div>
             
@@ -204,7 +204,7 @@ import { TranslateService } from '@ngx-translate/core';
         <div>
           <!-- User activity card -->
           <div class="bg-white rounded-xl shadow-card p-6 border border-gray-100 mb-8">
-            <h3 class="text-lg font-semibold text-gray-800 mb-4">Recent Activity</h3>
+            <h3 class="text-lg font-semibold text-gray-800 mb-4">{{ 'DASHBOARD.RECENT_ACTIVITY' | translate }}</h3>
             
             <div class="space-y-5">
               <div class="flex">
