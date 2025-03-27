@@ -1,0 +1,39 @@
+{
+  "APP": {
+    "TITLE": "Angular Demo",
+    "WELCOME": "Welcome to our application",
+    "DASHBOARD": "Dashboard",
+    "USERS": "Users",
+    "PRODUCTS": "Products",
+    "SETTINGS": "Settings",
+    "LOGOUT": "Logout",
+    "HOME": "Home"
+  },
+  "COMMON": {
+    "SAVE": "Save",
+    "CANCEL": "Cancel",
+    "DELETE": "Delete",
+    "EDIT": "Edit",
+    "ADD": "Add",
+    "SEARCH": "Search",
+    "FILTER": "Filter",
+    "SORT": "Sort",
+    "LOADING": "Loading...",
+    "NO_RESULTS": "No results found"
+  },
+  "USER": {
+    "NAME": "Name",
+    "EMAIL": "Email",
+    "ROLE": "Role",
+    "STATUS": "Status",
+    "ACTIONS": "Actions"
+  },
+  "PRODUCT": {
+    "NAME": "Name",
+    "PRICE": "Price",
+    "DESCRIPTION": "Description",
+    "CATEGORY": "Category",
+    "IN_STOCK": "In Stock",
+    "OUT_OF_STOCK": "Out of Stock"
+  }
+} 

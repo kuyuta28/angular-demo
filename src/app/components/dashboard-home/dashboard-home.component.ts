@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { StorageService } from '../../services/storage.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-dashboard-home',
@@ -7,21 +8,21 @@ import { StorageService } from '../../services/storage.service';
     <div>
       <div class="flex justify-between items-center mb-8">
         <div>
-          <h2 class="text-2xl font-bold text-gray-800">Dashboard Overview</h2>
-          <p class="text-gray-600 mt-1">Welcome back! Here's what's happening with your store today.</p>
+          <h2 class="text-2xl font-bold text-gray-800">{{ 'APP.DASHBOARD' | translate }}</h2>
+          <p class="text-gray-600 mt-1">{{ 'APP.WELCOME' | translate }}</p>
         </div>
         <div class="flex space-x-2">
           <button class="flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
             </svg>
-            Export
+            {{ 'COMMON.EXPORT' | translate }}
           </button>
           <button class="flex items-center px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
             </svg>
-            Filter
+            {{ 'COMMON.FILTER' | translate }}
           </button>
         </div>
       </div>
@@ -36,7 +37,7 @@ import { StorageService } from '../../services/storage.service';
               </svg>
             </div>
             <div>
-              <div class="text-sm font-medium text-gray-500">Total Users</div>
+              <div class="text-sm font-medium text-gray-500">{{ 'APP.USERS' | translate }}</div>
               <div class="text-xl font-semibold">{{ usersCount }}</div>
             </div>
           </div>
@@ -56,7 +57,7 @@ import { StorageService } from '../../services/storage.service';
               </svg>
             </div>
             <div>
-              <div class="text-sm font-medium text-gray-500">Total Products</div>
+              <div class="text-sm font-medium text-gray-500">{{ 'APP.PRODUCTS' | translate }}</div>
               <div class="text-xl font-semibold">{{ productsCount }}</div>
             </div>
           </div>
@@ -282,7 +283,10 @@ export class DashboardHomeComponent implements OnInit {
   productsCount = 0;
   topProducts: any[] = [];
 
-  constructor(private storageService: StorageService) {}
+  constructor(
+    private storageService: StorageService,
+    private translate: TranslateService
+  ) {}
 
   ngOnInit(): void {
     this.loadData();

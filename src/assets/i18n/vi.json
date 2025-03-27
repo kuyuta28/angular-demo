@@ -1,0 +1,39 @@
+{
+  "APP": {
+    "TITLE": "Angular Demo",
+    "WELCOME": "Chào mừng đến với ứng dụng của chúng tôi",
+    "DASHBOARD": "Bảng điều khiển",
+    "USERS": "Người dùng",
+    "PRODUCTS": "Sản phẩm",
+    "SETTINGS": "Cài đặt",
+    "LOGOUT": "Đăng xuất",
+    "HOME": "Trang chủ"
+  },
+  "COMMON": {
+    "SAVE": "Lưu",
+    "CANCEL": "Hủy",
+    "DELETE": "Xóa",
+    "EDIT": "Sửa",
+    "ADD": "Thêm",
+    "SEARCH": "Tìm kiếm",
+    "FILTER": "Lọc",
+    "SORT": "Sắp xếp",
+    "LOADING": "Đang tải...",
+    "NO_RESULTS": "Không tìm thấy kết quả nào"
+  },
+  "USER": {
+    "NAME": "Tên",
+    "EMAIL": "Email",
+    "ROLE": "Vai trò",
+    "STATUS": "Trạng thái",
+    "ACTIONS": "Hành động"
+  },
+  "PRODUCT": {
+    "NAME": "Tên",
+    "PRICE": "Giá",
+    "DESCRIPTION": "Mô tả",
+    "CATEGORY": "Danh mục",
+    "IN_STOCK": "Còn hàng",
+    "OUT_OF_STOCK": "Hết hàng"
+  }
+} 
