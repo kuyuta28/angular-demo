@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../../models/user.model';
 import { StorageService } from '../../services/storage.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-users',
@@ -8,15 +9,15 @@ import { StorageService } from '../../services/storage.service';
     <div>
       <div class="flex justify-between items-center mb-8">
         <div>
-          <h2 class="text-2xl font-bold text-gray-800">User Management</h2>
-          <p class="text-gray-600 mt-1">Manage your system users and their access levels</p>
+          <h2 class="text-2xl font-bold text-gray-800">{{ 'USER.MANAGEMENT' | translate }}</h2>
+          <p class="text-gray-600 mt-1">{{ 'USER.MANAGEMENT_DESC' | translate }}</p>
         </div>
         <button (click)="openAddUserModal()" 
                 class="flex items-center bg-indigo-600 text-white px-5 py-2.5 rounded-lg hover:bg-indigo-700 transition-all duration-200 shadow-md">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
           </svg>
-          Add User
+          {{ 'USER.ADD_USER' | translate }}
         </button>
       </div>
 
@@ -30,7 +31,7 @@ import { StorageService } from '../../services/storage.service';
               </svg>
             </div>
             <div>
-              <p class="text-white text-opacity-80 text-sm">Total Users</p>
+              <p class="text-white text-opacity-80 text-sm">{{ 'USER.TOTAL_USERS' | translate }}</p>
               <h3 class="text-2xl font-bold">{{ users.length }}</h3>
             </div>
           </div>
@@ -43,7 +44,7 @@ import { StorageService } from '../../services/storage.service';
               </svg>
             </div>
             <div>
-              <p class="text-white text-opacity-80 text-sm">Active Users</p>
+              <p class="text-white text-opacity-80 text-sm">{{ 'USER.ACTIVE_USERS' | translate }}</p>
               <h3 class="text-2xl font-bold">{{ getActiveUsersCount() }}</h3>
             </div>
           </div>
@@ -56,7 +57,7 @@ import { StorageService } from '../../services/storage.service';
               </svg>
             </div>
             <div>
-              <p class="text-white text-opacity-80 text-sm">Admin Users</p>
+              <p class="text-white text-opacity-80 text-sm">{{ 'USER.ADMIN_USERS' | translate }}</p>
               <h3 class="text-2xl font-bold">{{ getAdminUsersCount() }}</h3>
             </div>
           </div>
@@ -74,7 +75,7 @@ import { StorageService } from '../../services/storage.service';
           type="text"
           [(ngModel)]="searchTerm"
           (keyup)="filterUsers()"
-          placeholder="Search users..."
+          placeholder="{{ 'USER.SEARCH_USERS' | translate }}"
           class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
         />
       </div>
@@ -84,11 +85,11 @@ import { StorageService } from '../../services/storage.service';
         <table class="min-w-full divide-y divide-gray-200">
           <thead class="bg-gray-50">
             <tr>
-              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">User</th>
-              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Role</th>
-              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Created</th>
-              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{{ 'USER.USER' | translate }}</th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{{ 'USER.ROLE' | translate }}</th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{{ 'USER.STATUS' | translate }}</th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{{ 'USER.CREATED_AT' | translate }}</th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">{{ 'USER.ACTIONS' | translate }}</th>
             </tr>
           </thead>
           <tbody class="bg-white divide-y divide-gray-200">
@@ -143,7 +144,7 @@ import { StorageService } from '../../services/storage.service';
                 </svg>
                 <p>No users found matching your search.</p>
                 <button *ngIf="searchTerm" (click)="clearSearch()" class="mt-2 text-indigo-600 hover:text-indigo-800 text-sm font-medium">
-                  Clear search
+                  {{ 'USER.CLEAR_SEARCH' | translate }}
                 </button>
               </td>
             </tr>
@@ -166,44 +167,44 @@ import { StorageService } from '../../services/storage.service';
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                 </svg>
               </div>
-              <h3 class="text-lg font-medium text-gray-900 mt-2">{{ isEditing ? 'Edit User' : 'Add New User' }}</h3>
-              <p class="text-sm text-gray-500 mt-1">{{ isEditing ? 'Update user information' : 'Enter user details below' }}</p>
+              <h3 class="text-lg font-medium text-gray-900 mt-2">{{ isEditing ? ('USER.EDIT_USER' | translate) : ('USER.ADD_USER' | translate) }}</h3>
+              <p class="text-sm text-gray-500 mt-1">{{ isEditing ? ('USER.UPDATE_INFO' | translate) : ('USER.ENTER_DETAILS' | translate) }}</p>
             </div>
             <form (ngSubmit)="submitUser()" class="space-y-4">
               <div>
-                <label class="block text-sm font-medium text-gray-700">Username</label>
+                <label class="block text-sm font-medium text-gray-700">{{ 'USER.USERNAME' | translate }}</label>
                 <input type="text" [(ngModel)]="currentUser.username" name="username" required
                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
               </div>
               <div>
-                <label class="block text-sm font-medium text-gray-700">Email</label>
+                <label class="block text-sm font-medium text-gray-700">{{ 'USER.EMAIL' | translate }}</label>
                 <input type="email" [(ngModel)]="currentUser.email" name="email" required
                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
               </div>
               <div>
-                <label class="block text-sm font-medium text-gray-700">Role</label>
+                <label class="block text-sm font-medium text-gray-700">{{ 'USER.ROLE' | translate }}</label>
                 <select [(ngModel)]="currentUser.role" name="role" required
                         class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                  <option value="admin">Admin</option>
-                  <option value="user">User</option>
+                  <option value="admin">{{ 'USER.ADMIN' | translate }}</option>
+                  <option value="user">{{ 'USER.USER' | translate }}</option>
                 </select>
               </div>
               <div>
-                <label class="block text-sm font-medium text-gray-700">Status</label>
+                <label class="block text-sm font-medium text-gray-700">{{ 'USER.STATUS' | translate }}</label>
                 <select [(ngModel)]="currentUser.status" name="status" required
                         class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                  <option value="active">Active</option>
-                  <option value="inactive">Inactive</option>
+                  <option value="active">{{ 'USER.ACTIVE' | translate }}</option>
+                  <option value="inactive">{{ 'USER.INACTIVE' | translate }}</option>
                 </select>
               </div>
               <div class="flex justify-end space-x-3 pt-3">
                 <button type="button" (click)="closeModal()"
                         class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                  Cancel
+                  {{ 'USER.CANCEL' | translate }}
                 </button>
                 <button type="submit"
                         class="px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                  {{ isEditing ? 'Update' : 'Add' }}
+                  {{ isEditing ? ('USER.UPDATE' | translate) : ('USER.ADD' | translate) }}
                 </button>
               </div>
             </form>
@@ -222,7 +223,10 @@ export class UsersComponent implements OnInit {
   currentUser: Partial<User> = {};
   searchTerm = '';
 
-  constructor(private storageService: StorageService) {}
+  constructor(
+    private storageService: StorageService,
+    private translate: TranslateService
+  ) {}
 
   ngOnInit() {
     this.loadUsers();

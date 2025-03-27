@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { StorageService } from '../../services/storage.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-dashboard-home',
@@ -7,21 +8,21 @@ import { StorageService } from '../../services/storage.service';
     <div>
       <div class="flex justify-between items-center mb-8">
         <div>
-          <h2 class="text-2xl font-bold text-gray-800">Dashboard Overview</h2>
-          <p class="text-gray-600 mt-1">Welcome back! Here's what's happening with your store today.</p>
+          <h2 class="text-2xl font-bold text-gray-800">{{ 'APP.DASHBOARD' | translate }}</h2>
+          <p class="text-gray-600 mt-1">{{ 'APP.WELCOME' | translate }}</p>
         </div>
         <div class="flex space-x-2">
           <button class="flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
             </svg>
-            Export
+            {{ 'COMMON.EXPORT' | translate }}
           </button>
           <button class="flex items-center px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
             </svg>
-            Filter
+            {{ 'COMMON.FILTER' | translate }}
           </button>
         </div>
       </div>
@@ -36,7 +37,7 @@ import { StorageService } from '../../services/storage.service';
               </svg>
             </div>
             <div>
-              <div class="text-sm font-medium text-gray-500">Total Users</div>
+              <div class="text-sm font-medium text-gray-500">{{ 'APP.USERS' | translate }}</div>
               <div class="text-xl font-semibold">{{ usersCount }}</div>
             </div>
           </div>
@@ -56,7 +57,7 @@ import { StorageService } from '../../services/storage.service';
               </svg>
             </div>
             <div>
-              <div class="text-sm font-medium text-gray-500">Total Products</div>
+              <div class="text-sm font-medium text-gray-500">{{ 'APP.PRODUCTS' | translate }}</div>
               <div class="text-xl font-semibold">{{ productsCount }}</div>
             </div>
           </div>
@@ -115,11 +116,11 @@ import { StorageService } from '../../services/storage.service';
           <!-- Chart -->
           <div class="bg-white rounded-xl shadow-card p-6 border border-gray-100 mb-8">
             <div class="flex justify-between items-center mb-6">
-              <h3 class="text-lg font-semibold text-gray-800">Monthly Revenue</h3>
+              <h3 class="text-lg font-semibold text-gray-800">{{ 'DASHBOARD.CHART_TITLE' | translate }}</h3>
               <div class="flex space-x-2">
-                <button class="px-3 py-1.5 text-xs font-medium text-indigo-600 bg-indigo-50 rounded-md hover:bg-indigo-100">Weekly</button>
-                <button class="px-3 py-1.5 text-xs font-medium text-white bg-indigo-600 rounded-md hover:bg-indigo-700">Monthly</button>
-                <button class="px-3 py-1.5 text-xs font-medium text-indigo-600 bg-indigo-50 rounded-md hover:bg-indigo-100">Yearly</button>
+                <button class="px-3 py-1.5 text-xs font-medium text-indigo-600 bg-indigo-50 rounded-md hover:bg-indigo-100">{{ 'DASHBOARD.WEEKLY' | translate }}</button>
+                <button class="px-3 py-1.5 text-xs font-medium text-white bg-indigo-600 rounded-md hover:bg-indigo-700">{{ 'DASHBOARD.MONTHLY' | translate }}</button>
+                <button class="px-3 py-1.5 text-xs font-medium text-indigo-600 bg-indigo-50 rounded-md hover:bg-indigo-100">{{ 'DASHBOARD.YEARLY' | translate }}</button>
               </div>
             </div>
             
@@ -131,7 +132,7 @@ import { StorageService } from '../../services/storage.service';
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                   </svg>
                   <p class="text-gray-500">Chart would appear here in a real implementation</p>
-                  <p class="text-gray-400 text-sm mt-1">Bar chart showing monthly revenue over the past year</p>
+                  <p class="text-gray-400 text-sm mt-1">Bar chart showing {{ 'DASHBOARD.CHART_TITLE' | translate | lowercase }} over the past year</p>
                 </div>
               </div>
             </div>
@@ -141,8 +142,8 @@ import { StorageService } from '../../services/storage.service';
           <div class="bg-white rounded-xl shadow-card border border-gray-100">
             <div class="p-6 border-b border-gray-100">
               <div class="flex justify-between items-center">
-                <h3 class="text-lg font-semibold text-gray-800">Recent Orders</h3>
-                <a href="#" class="text-sm font-medium text-indigo-600 hover:text-indigo-800">View All</a>
+                <h3 class="text-lg font-semibold text-gray-800">{{ 'DASHBOARD.RECENT_ORDERS' | translate }}</h3>
+                <a href="#" class="text-sm font-medium text-indigo-600 hover:text-indigo-800">{{ 'DASHBOARD.VIEW_ALL' | translate }}</a>
               </div>
             </div>
             
@@ -203,7 +204,7 @@ import { StorageService } from '../../services/storage.service';
         <div>
           <!-- User activity card -->
           <div class="bg-white rounded-xl shadow-card p-6 border border-gray-100 mb-8">
-            <h3 class="text-lg font-semibold text-gray-800 mb-4">Recent Activity</h3>
+            <h3 class="text-lg font-semibold text-gray-800 mb-4">{{ 'DASHBOARD.RECENT_ACTIVITY' | translate }}</h3>
             
             <div class="space-y-5">
               <div class="flex">
@@ -282,7 +283,10 @@ export class DashboardHomeComponent implements OnInit {
   productsCount = 0;
   topProducts: any[] = [];
 
-  constructor(private storageService: StorageService) {}
+  constructor(
+    private storageService: StorageService,
+    private translate: TranslateService
+  ) {}
 
   ngOnInit(): void {
     this.loadData();

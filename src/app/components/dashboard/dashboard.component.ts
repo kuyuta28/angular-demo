@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,7 +13,7 @@ import { Component } from '@angular/core';
               <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
               </svg>
-              <h1 class="text-xl font-bold text-white ml-3">Admin Portal</h1>
+              <h1 class="text-xl font-bold text-white ml-3">{{ 'APP.TITLE' | translate }}</h1>
             </div>
           </div>
           <nav class="flex-1 p-4 mt-4">
@@ -23,7 +24,7 @@ import { Component } from '@angular/core';
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
                   </svg>
-                  Dashboard
+                  {{ 'APP.DASHBOARD' | translate }}
                 </a>
               </li>
               <li>
@@ -32,7 +33,7 @@ import { Component } from '@angular/core';
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
                   </svg>
-                  Users
+                  {{ 'APP.USERS' | translate }}
                 </a>
               </li>
               <li>
@@ -41,7 +42,7 @@ import { Component } from '@angular/core';
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                   </svg>
-                  Products
+                  {{ 'APP.PRODUCTS' | translate }}
                 </a>
               </li>
             </ul>
@@ -51,7 +52,7 @@ import { Component } from '@angular/core';
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
               </svg>
-              Logout
+              {{ 'APP.LOGOUT' | translate }}
             </a>
           </div>
         </div>
@@ -60,6 +61,9 @@ import { Component } from '@angular/core';
       <!-- Main Content -->
       <main class="ml-64 w-full p-8">
         <div class="container mx-auto">
+          <div class="flex justify-end mb-4">
+            <app-language-selector></app-language-selector>
+          </div>
           <div class="bg-white rounded-xl shadow-md p-6 mb-8">
             <router-outlet></router-outlet>
           </div>
@@ -69,4 +73,6 @@ import { Component } from '@angular/core';
   `,
   styles: []
 })
-export class DashboardComponent {} 
+export class DashboardComponent {
+  constructor(private translate: TranslateService) {}
+} 
