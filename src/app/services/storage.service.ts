@@ -29,24 +29,22 @@ export class StorageService {
     if (!localStorage.getItem(this.PRODUCTS_KEY)) {
       const sampleProducts: Product[] = [
         {
-          id: '1',
+          id: 1,
           name: 'Sample Product 1',
           description: 'This is a sample product',
           price: 99.99,
+          quantity: 100,
           category: 'Electronics',
-          stock: 100,
-          createdAt: new Date(),
-          updatedAt: new Date()
+          imageUrl: 'https://via.placeholder.com/200'
         },
         {
-          id: '2',
+          id: 2,
           name: 'Sample Product 2',
           description: 'Another sample product',
           price: 149.99,
+          quantity: 50,
           category: 'Clothing',
-          stock: 50,
-          createdAt: new Date(),
-          updatedAt: new Date()
+          imageUrl: 'https://via.placeholder.com/200'
         }
       ];
       localStorage.setItem(this.PRODUCTS_KEY, JSON.stringify(sampleProducts));
@@ -74,7 +72,7 @@ export class StorageService {
     const users = this.getUsers();
     const index = users.findIndex(u => u.id === user.id);
     if (index !== -1) {
-      users[index] = { ...user, updatedAt: new Date() };
+      users[index] = user;
       localStorage.setItem(this.USERS_KEY, JSON.stringify(users));
     }
     return user;
@@ -91,13 +89,11 @@ export class StorageService {
     return JSON.parse(localStorage.getItem(this.PRODUCTS_KEY) || '[]');
   }
 
-  addProduct(product: Omit<Product, 'id' | 'createdAt' | 'updatedAt'>): Product {
+  addProduct(product: Omit<Product, 'id'>): Product {
     const products = this.getProducts();
     const newProduct: Product = {
       ...product,
-      id: (products.length + 1).toString(),
-      createdAt: new Date(),
-      updatedAt: new Date()
+      id: products.length + 1
     };
     products.push(newProduct);
     localStorage.setItem(this.PRODUCTS_KEY, JSON.stringify(products));
@@ -108,13 +104,13 @@ export class StorageService {
     const products = this.getProducts();
     const index = products.findIndex(p => p.id === product.id);
     if (index !== -1) {
-      products[index] = { ...product, updatedAt: new Date() };
+      products[index] = product;
       localStorage.setItem(this.PRODUCTS_KEY, JSON.stringify(products));
     }
     return product;
   }
 
-  deleteProduct(id: string): void {
+  deleteProduct(id: number): void {
     const products = this.getProducts();
     const filteredProducts = products.filter(product => product.id !== id);
     localStorage.setItem(this.PRODUCTS_KEY, JSON.stringify(filteredProducts));

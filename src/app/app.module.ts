@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
@@ -12,6 +12,13 @@ import { UsersComponent } from './components/users/users.component';
 import { ProductsComponent } from './components/products/products.component';
 import { DashboardHomeComponent } from './components/dashboard-home/dashboard-home.component';
 import { LanguageSelectorComponent } from './components/language-selector/language-selector.component';
+import { NotificationComponent } from './shared/notification/notification.component';
+
+// Services
+import { ConfigService } from './services/config.service';
+import { ApiResponseService } from './services/api-response.service';
+import { ProductService } from './services/product.service';
+import { StorageService } from './services/storage.service';
 
 // Factory function for TranslateHttpLoader
 export function HttpLoaderFactory(http: HttpClient) {
@@ -38,23 +45,30 @@ const routes: Routes = [
     UsersComponent,
     ProductsComponent,
     DashboardHomeComponent,
-    LanguageSelectorComponent
+    LanguageSelectorComponent,
+    NotificationComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     TranslateModule.forRoot({
-      defaultLanguage: 'en',
       loader: {
         provide: TranslateLoader,
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
-      }
+      },
+      defaultLanguage: 'en'
     }),
     RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [
+    ConfigService,
+    ApiResponseService,
+    ProductService,
+    StorageService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
