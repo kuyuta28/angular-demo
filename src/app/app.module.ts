@@ -1,10 +1,11 @@
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { firstValueFrom } from 'rxjs';
 
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -23,6 +24,11 @@ import { StorageService } from './services/storage.service';
 // Factory function for TranslateHttpLoader
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
+
+// Factory function to load application configuration before app starts
+export function initializeApp(configService: ConfigService) {
+  return () => firstValueFrom(configService.loadConfig());
 }
 
 const routes: Routes = [
@@ -67,7 +73,13 @@ const routes: Routes = [
     ConfigService,
     ApiResponseService,
     ProductService,
-    StorageService
+    StorageService,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initializeApp,
+      deps: [ConfigService],
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })
