@@ -1,0 +1,21 @@
+{
+  "api": {
+    "baseUrl": "https://api.example.com",
+    "apiPath": "/api/v1",
+    "timeout": 60000,
+    "retryAttempts": 5,
+    "retryDelay": 2000
+  },
+  "features": {
+    "enableNotifications": true,
+    "darkMode": true,
+    "enableAnalytics": true
+  },
+  "version": "1.0.0",
+  "theme": "dark",
+  "productService": {
+    "endpoint": "products",
+    "cacheDuration": 600000,
+    "pageSize": 20
+  }
+} 
