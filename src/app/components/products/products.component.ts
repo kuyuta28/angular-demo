@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../../models/product.model';
 import { StorageService } from '../../services/storage.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-products',
@@ -8,15 +9,15 @@ import { StorageService } from '../../services/storage.service';
     <div>
       <div class="flex justify-between items-center mb-8">
         <div>
-          <h2 class="text-2xl font-bold text-gray-800">Product Management</h2>
-          <p class="text-gray-600 mt-1">Manage your inventory and product listings</p>
+          <h2 class="text-2xl font-bold text-gray-800">{{ 'PRODUCT.MANAGEMENT' | translate }}</h2>
+          <p class="text-gray-600 mt-1">{{ 'PRODUCT.MANAGEMENT_DESC' | translate }}</p>
         </div>
         <button (click)="openAddProductModal()" 
                 class="flex items-center bg-indigo-600 text-white px-5 py-2.5 rounded-lg hover:bg-indigo-700 transition-all duration-200 shadow-md">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
           </svg>
-          Add Product
+          {{ 'PRODUCT.ADD_PRODUCT' | translate }}
         </button>
       </div>
 
@@ -30,7 +31,7 @@ import { StorageService } from '../../services/storage.service';
               </svg>
             </div>
             <div>
-              <p class="text-white text-opacity-80 text-sm">Total Products</p>
+              <p class="text-white text-opacity-80 text-sm">{{ 'PRODUCT.TOTAL_PRODUCTS' | translate }}</p>
               <h3 class="text-2xl font-bold">{{ products.length }}</h3>
             </div>
           </div>
@@ -43,7 +44,7 @@ import { StorageService } from '../../services/storage.service';
               </svg>
             </div>
             <div>
-              <p class="text-white text-opacity-80 text-sm">Categories</p>
+              <p class="text-white text-opacity-80 text-sm">{{ 'PRODUCT.CATEGORIES' | translate }}</p>
               <h3 class="text-2xl font-bold">{{ getUniqueCategories().length }}</h3>
             </div>
           </div>
@@ -56,7 +57,7 @@ import { StorageService } from '../../services/storage.service';
               </svg>
             </div>
             <div>
-              <p class="text-white text-opacity-80 text-sm">In Stock</p>
+              <p class="text-white text-opacity-80 text-sm">{{ 'PRODUCT.IN_STOCK' | translate }}</p>
               <h3 class="text-2xl font-bold">{{ getTotalStock() }}</h3>
             </div>
           </div>
@@ -75,7 +76,7 @@ import { StorageService } from '../../services/storage.service';
             type="text"
             [(ngModel)]="searchTerm"
             (keyup)="filterProducts()"
-            placeholder="Search products..."
+            placeholder="{{ 'PRODUCT.SEARCH_PRODUCTS' | translate }}"
             class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
           />
         </div>
@@ -83,7 +84,7 @@ import { StorageService } from '../../services/storage.service';
           [(ngModel)]="categoryFilter"
           (change)="filterProducts()"
           class="px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
-          <option value="">All Categories</option>
+          <option value="">{{ 'PRODUCT.ALL_CATEGORIES' | translate }}</option>
           <option *ngFor="let category of getUniqueCategories()" [value]="category">{{ category }}</option>
         </select>
         <button
@@ -93,7 +94,7 @@ import { StorageService } from '../../services/storage.service';
           [class.bg-white]="!inStockOnly"
           [class.text-gray-700]="!inStockOnly"
           class="px-4 py-2 border border-gray-300 rounded-md text-sm font-medium hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors duration-200">
-          In Stock Only
+          {{ 'PRODUCT.IN_STOCK_ONLY' | translate }}
         </button>
       </div>
 
@@ -143,15 +144,15 @@ import { StorageService } from '../../services/storage.service';
         <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto text-gray-400 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
         </svg>
-        <h3 class="text-lg font-medium text-gray-900 mb-1">No products found</h3>
+        <h3 class="text-lg font-medium text-gray-900 mb-1">{{ 'PRODUCT.NO_PRODUCTS_FOUND' | translate }}</h3>
         <p class="text-gray-500 mb-4">
-          {{ searchTerm || categoryFilter || inStockOnly ? 'No products match your current filters.' : 'Add some products to get started.' }}
+          {{ searchTerm || categoryFilter || inStockOnly ? ('PRODUCT.NO_PRODUCTS_MATCH' | translate) : ('PRODUCT.ADD_SOME_PRODUCTS' | translate) }}
         </p>
         <button 
           *ngIf="searchTerm || categoryFilter || inStockOnly"
           (click)="resetFilters()"
           class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-          Reset Filters
+          {{ 'PRODUCT.RESET_FILTERS' | translate }}
         </button>
         <button 
           *ngIf="!searchTerm && !categoryFilter && !inStockOnly"
@@ -160,7 +161,7 @@ import { StorageService } from '../../services/storage.service';
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
           </svg>
-          Add Product
+          {{ 'PRODUCT.ADD_PRODUCT' | translate }}
         </button>
       </div>
 
@@ -179,8 +180,8 @@ import { StorageService } from '../../services/storage.service';
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
                 </svg>
               </div>
-              <h3 class="text-lg font-medium text-gray-900 mt-2">{{ isEditing ? 'Edit Product' : 'Add New Product' }}</h3>
-              <p class="text-sm text-gray-500 mt-1">{{ isEditing ? 'Update product information' : 'Enter product details below' }}</p>
+              <h3 class="text-lg font-medium text-gray-900 mt-2">{{ isEditing ? ('PRODUCT.EDIT_PRODUCT' | translate) : ('PRODUCT.ADD_NEW_PRODUCT' | translate) }}</h3>
+              <p class="text-sm text-gray-500 mt-1">{{ isEditing ? ('PRODUCT.UPDATE_INFO' | translate) : ('PRODUCT.ENTER_DETAILS' | translate) }}</p>
             </div>
             <form (ngSubmit)="submitProduct()" class="space-y-4">
               <div>
@@ -252,7 +253,10 @@ export class ProductsComponent implements OnInit {
   categoryFilter = '';
   inStockOnly = false;
 
-  constructor(private storageService: StorageService) {}
+  constructor(
+    private storageService: StorageService,
+    private translate: TranslateService
+  ) {}
 
   ngOnInit() {
     this.loadProducts();
