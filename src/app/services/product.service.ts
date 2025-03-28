@@ -9,12 +9,15 @@ import { ConfigService } from './config.service';
   providedIn: 'root'
 })
 export class ProductService {
-  private endpoint = 'products';
+  private endpoint: string;
 
   constructor(
     private http: HttpClient,
     private configService: ConfigService
-  ) {}
+  ) {
+    // Get endpoint from config - allows changing the endpoint without modifying code
+    this.endpoint = this.configService.getValue<string>('productService.endpoint', 'products');
+  }
 
   /**
    * Get all products
